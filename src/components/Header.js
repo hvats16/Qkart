@@ -5,7 +5,7 @@ import Box from "@mui/material/Box";
 import React from "react";
 import "./Header.css";
 
-const Header = ({ children, hasHiddenAuthButtons }) => {
+const Header = (props) => {
   const user = localStorage.getItem("username");
   const isLoggedIn = user ? true : false;
   const history = useHistory();
@@ -14,13 +14,18 @@ const Header = ({ children, hasHiddenAuthButtons }) => {
     window.location.reload();
     history.push("/login");
   };
+  let searchBox = <Box></Box>;
+
+  if (props.hasHiddenAuthButtons) {
+    searchBox = props.searchBox;
+  }
   return (
     <Box className="header">
       <Box className="header-title">
         <img src="logo_light.svg" alt="QKart-icon"></img>
       </Box>
-
-      {!hasHiddenAuthButtons && (
+      {searchBox}
+      {!props.hasHiddenAuthButtons && (
         <Button
           className="explore-button"
           startIcon={<ArrowBackIcon />}
@@ -30,7 +35,7 @@ const Header = ({ children, hasHiddenAuthButtons }) => {
           Back to explore
         </Button>
       )}
-      {hasHiddenAuthButtons && !isLoggedIn && (
+      {props.hasHiddenAuthButtons && !isLoggedIn && (
         <Stack direction="row" spacing={2}>
           <Button variant="text" onClick={() => history.push("/login")}>
             Login
@@ -40,7 +45,7 @@ const Header = ({ children, hasHiddenAuthButtons }) => {
           </Button>
         </Stack>
       )}
-      {hasHiddenAuthButtons && isLoggedIn && (
+      {props.hasHiddenAuthButtons && isLoggedIn && (
         <Stack direction="row" spacing={2}>
           <Avatar alt={user} src="avatar.png" />
           <p style={{ marginTop: "10px" }}>{user}</p>

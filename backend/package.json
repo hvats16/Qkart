@@ -6,14 +6,13 @@
         "start": "node index.js"
     },
     "dependencies": {
-        "@babel/core": "^7.17.10",
-        "@testing-library/dom": "^8.13.0",
         "cors": "^2.8.5",
         "express": "^4.17.1",
         "jsonwebtoken": "^8.5.1",
         "nanoid": "^3.1.12",
         "nedb": "^1.8.0",
-        "nodemon": "^2.0.20",
-        "typescript": "^3.2.1"
+        "@testing-library/dom": "^8.13.0",
+        "typescript": "^3.2.1",
+        "@babel/core": "^7.17.10"
     }
 }
