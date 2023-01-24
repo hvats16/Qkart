@@ -43,7 +43,7 @@ const Products = () => {
         if(filteredProducts.length > 0){
             
           productGrid = filteredProducts.map(product => (
-            <Grid item xs={12} sm={6} md={3} key={product._id}>
+            <Grid item xs={12} sm={6} md={3} key={product._id} sx={{p: "10px"}}>
                 <ProductCard handleAddToCart={handleAddToCart} product={product}/>
             </Grid>
             ))
